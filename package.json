@@ -1,0 +1,24 @@
+{
+  "name": "pro",
+  "version": "1.0.0",
+  "description": "The finished product from my blog:",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.13.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

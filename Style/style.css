@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.form{
+    margin: 25px 20%;
+    border: 1px solid #0e1d1b;
+    background-color: #15E9C4;
+    color: white;
+    height: 200px
+}
+
+.in{
+    text-align: center;
+    height: 40px;
+    font-size: 25px;
+    margin: 10px;
+}
+input{
+    height: 30px;
+    font-size: 20px;
+    color: #0e1d1b;
+    font-weight: 600;
+}
+
+.but{
+    border: 1px solid black;
+    width: 15%;
+    background-color:#102220;
+    color: white;
+    font-weight: 900;
+}
+
+.but1{
+    border: 1px solid black;
+    width: 75%;
+    background-color:rgb(10, 126, 104);
+    color: white;
+    font-weight: 900;
+}
+
+.but:hover{
+    cursor: pointer;
+}
+
+
+td{
+    text-align: center;
+    font-size: 15px;
+    color: rgb(10, 126, 104);
+}

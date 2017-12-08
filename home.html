@@ -1,0 +1,35 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>My first NodeJS Website</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body onload="getUser()">
+        <div class="in">
+            <p>Hello <span class="username"></span>! </p>
+            <p  style="float:right; margin-right:20px"><a href="/logout">Logout</a> </p>
+        </div>
+
+        <form class="form">
+            <p class="in">Add more to list: <input type="text" class="details" /> </p>
+            <p class="in">Public post? <input id="check" type="checkbox" class="isPublic"  style=" height:auto"/></p>
+            <p class="in"><input class="but" type="button" onclick="addItem()" value="Add to list"/></p>
+        </form>
+
+        <table border="1px" width="100%" id="itemtable">
+			<tr>
+				<th class="in">Id</th>
+				<th class="in">Details</th>
+				<th class="in">Post Time</th>
+				<th class="in">Edit Time</th>
+				<th class="in">Edit</th>
+				<th class="in">Delete</th>
+				<th class="in">Public Post</th>
+			</tr>
+		</table>
+        
+    </body>
+</html>

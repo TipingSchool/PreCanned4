@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>My first NodeJS Website</title>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="/js/script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body onload="getPublicItems()">
+
+        <form class="form">
+        	<p class="in">Username <input type="text" class="username" /></p>
+        	<p class="in">Password <input type="password" class="password" /></p>
+            <p class="in"><input class="but" type="button" onclick="loginUser()" value="Login"/></p>
+            <p class="in">Not yet registered? <a href="/register">Click here to create an account.</a> </p>
+        </form>
+
+    
+
+        <table border="1px" width="100%" id="publicitemtable">
+            <tr>
+                <th class="in">Id</th>
+                <th class="in">Details</th>
+                <th class="in">Post Time</th>
+                <th class="in">Edit Time</th>
+            </tr>
+        </table>
+
+    </body>
+</html>
