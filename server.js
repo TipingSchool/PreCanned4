@@ -10,6 +10,7 @@ var cookieSession = require('cookie-session');
 var path = require('path')
 
 
+
 app.use(express.static(path.join(__dirname, 'Style')));
 
 /*Body parser*/
@@ -33,14 +34,9 @@ app.use(passport.session());
 /*Database connection - MongoDB*/
 
 //Created from the command earlier. Ensure this is done on the first_db instance
-var username = 'admin';
-var password = '123456';
 
-var dbHost = 'localhost';
-var dbPort = '27017';
-var database = 'first_db';
 
-var url = 'mongodb://' + username + ':' + password + '@' + dbHost + ':' + dbPort + '/' + database;
+var url = 'mongodb://tsninja:alpha@7302@ds163918.mlab.com:63918/ts-node';
 console.log('mongodb connection = ' + url);
 
 mongoose.connect(url, function(err) {
@@ -265,4 +261,34 @@ function getDateTime() {
 
 app.listen(port, '0.0.0.0', function() {
     console.log('Server running at port ' + port);
+});
+
+
+//This is not part of this exercise, it is mailchimp integration 
+var request = require('superagent');
+var mailchimpInstance   = 'us15',
+    listUniqueId        = '1917b1894f',
+    mailchimpApiKey     = 'de178ecaf4c367d43789cf3fc4ec3e11-us15';
+
+app.post('/sig', function (req, res) {
+    request
+        .post('https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/')
+        .set('Content-Type', 'application/json;charset=utf-8')
+        .set('Authorization', 'Basic ' + new Buffer('any:' + mailchimpApiKey ).toString('base64'))
+        .send({
+          'email_address': 'si@gmail.com',
+          'status': 'subscribed',
+          'merge_fields': {
+            'FNAME': 'ss',
+            'LNAME': 'sdsd'
+          }
+        })
+            .end(function(err, response) {
+              if (response.status < 300 || (response.status === 400 && response.body.title === "Member Exists")) {
+				res.send('Signed Up!');
+				console.log('dfdf')
+              } else {
+               console.log('Sign Up Failed :(');
+              }
+          });
 });
