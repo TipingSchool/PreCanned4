@@ -34,9 +34,14 @@ app.use(passport.session());
 /*Database connection - MongoDB*/
 
 //Created from the command earlier. Ensure this is done on the first_db instance
+var username = 'admin';
+var password = '123456';
 
+var dbHost = 'localhost';
+var dbPort = '27017';
+var database = 'first_db';
 
-var url = 'mongodb://tsninja:alpha@7302@ds163918.mlab.com:63918/ts-node';
+var url = 'mongodb://' + username + ':' + password + '@' + dbHost + ':' + dbPort + '/' + database;
 console.log('mongodb connection = ' + url);
 
 mongoose.connect(url, function(err) {
