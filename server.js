@@ -7,11 +7,18 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
+var cors = require('cors');
 var path = require('path')
 
 
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'Style')));
+app.use(function(req,res,next){
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers','Content-Type');
+    next();
+});
 
 /*Body parser*/
 app.use(bodyParser.urlencoded({
@@ -268,19 +275,24 @@ app.listen(port, '0.0.0.0', function() {
 var request = require('superagent');
 var mailchimpInstance   = 'us15',
     listUniqueId        = '1917b1894f',
-    mailchimpApiKey     = 'de178ecaf4c367d43789cf3fc4ec3e11-us15';
+    mailchimpApiKey     = 'c766c82f1be4f6f3ccd213c09c678bd2-us15';
 
-app.post('/sig', function (req, res) {
+app.get('/tsignup', function (req, res) {
+    var a = req.query.email;
+    var b = req.query.firstname
+    var c = req.query.phone
+    var d = req.query.opt
     request
         .post('https://' + mailchimpInstance + '.api.mailchimp.com/3.0/lists/' + listUniqueId + '/members/')
         .set('Content-Type', 'application/json;charset=utf-8')
         .set('Authorization', 'Basic ' + new Buffer('any:' + mailchimpApiKey ).toString('base64'))
         .send({
-          'email_address': 'si@gmail.com',
+          'email_address': a,
           'status': 'subscribed',
           'merge_fields': {
-            'FNAME': 'ss',
-            'LNAME': 'sdsd'
+            'FNAME': b,
+            'PHONE': c,
+            'LER':d
           }
         })
             .end(function(err, response) {
@@ -288,7 +300,8 @@ app.post('/sig', function (req, res) {
 				res.send('Signed Up!');
 				console.log('dfdf')
               } else {
-               console.log('Sign Up Failed :(');
+               console.log(response.status);
               }
-          });
+		  });
+	
 });
